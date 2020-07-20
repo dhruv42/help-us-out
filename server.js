@@ -1,15 +1,11 @@
 const express = require('express');
 const socketIO = require('socket.io')
 const http = require('http')
-
 const app = express()
-
 const routes = require('./routes');
 app.use('/', routes);
-
 const server = http.createServer(app)
 const io = socketIO(server);
-
 const port = process.env.PORT || 5000;
 let data = [
   {
@@ -33,7 +29,7 @@ let data = [
   {
     id: "manpreet_krishan",
     name: "Manpreet Krishan",
-    color: "",
+    color: "white",
     message: "Godam Push"
   },
   {
@@ -54,41 +50,28 @@ let data = [
 // });
 io.on('connection', (socket) => {
   console.log("New Client connected !");
-  getData(socket);
+  // socket.emit("FromAPI", data)
 
-  socket.on("updateData", (updateData) => {
+  socket.on("initialData",()=>{
+    console.log("Initial data called");
+    io.sockets.emit("FromAPI",data)
+  })
+
+  socket.on("updateData", (updatedData) => {
     console.log("Update Data event -----");
-    console.log(updateData)
+    console.log(updatedData)
     data = data.map((i) => {
-      if (i.id == updateData.id) {
-        return updateData
+      if (i.id == updatedData.id) {
+        return updatedData
       }
       return i
     })
-    getData(socket);
+    io.sockets.emit("updateFromAPI",data)
   });
 
   socket.on('disconnect', () => {
     console.log("Client disconnected !");
   })
 })
-
-// io.on('updateData', (updateData) => {
-//   console.log("Update Data event -----");
-//   data = updateData.map((i) => {
-//     if (i.id == req.body.id) {
-//       return req.body
-//     }
-//     return i
-//   })
-//   io.emit("FromAPI", data);
-// })
-
-
-const getData = socket => {
-  socket.emit("FromAPI", data);
-}
-
-
 
 server.listen(port, () => console.log(`Server listening on port ${port}`))
