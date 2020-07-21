@@ -4,3 +4,15 @@
 .update-form button {
   margin-top: 10px;
 }
+
+.color-dropdown {
+  margin-top: 10px;
+}
+
+.default-text-color{
+  color: #000000;
+}
+.submit-button{
+  margin-top: 10px;
+  text-align: center;
+}

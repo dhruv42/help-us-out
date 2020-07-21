@@ -11,31 +11,31 @@ let data = [
   {
     id: "dhrumil_popat",
     name: "Dhrumil Popat",
-    color: "#FF7272",
+    color: "#dc3545", //red
     message: "stuck in elastic search"
   },
   {
     id: "saransh_jain",
     name: "Saransh Jain",
-    color: "#9BF983",
+    color: "#28a745", //green
     message: "cart pre-order changes"
   },
   {
     id: "ashish_kadam",
     name: "Ashish Kadam",
-    color: "#F5C02E",
+    color: "#fd7e14", //orange
     message: "Gateway issue"
   },
   {
     id: "manpreet_krishan",
     name: "Manpreet Krishan",
-    color: "white",
+    color: "#FFFFFF",
     message: "Godam Push"
   },
   {
     id: "tejas_sharma",
     name: "Tejas Sharma",
-    color: "#F5C02E",
+    color: "#fd7e14",
     message: "Commission Issue, need to check with Sagar"
   }
 ]
