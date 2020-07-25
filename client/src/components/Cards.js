@@ -34,36 +34,31 @@ function Cards(props) {
 
                 <div className="card-body" style={{ backgroundColor: employee.color }}>
                     <p className={`card-text text-center ${messageColor}`}>{employee.message}</p>
-                    {/* <form onSubmit={updateEmployee} className="px-4 py-3">
-                    <div className="form-group">
-                        <input
-                            name="message"
-                            type="text"
-                            onChange={handleChange}
-                            style={{ width: "100%" }}
-                            placeholder="Type your query here"
-                            className="form-control"
-                        />
-                        <select onChange={handleChange} name="color" value={employee.color} className="form-control color-dropdown">
-                            <option value="#FF7272">Red</option>
-                            <option value="#9BF983">Green</option>
-                            <option value="#F5C02E">Orange</option>
-                        </select>
-                        <button type="submit" className="btn btn-primary submit-button">Submit</button> <br />
-                        <button type="button" className="btn btn-primary edit-button" data-toggle="modal" data-target="#exampleModal">Edit</button>
-
-                    </div>
-                </form> */}
                     <button type="button" className="btn btn-primary edit-button" onClick={() => setModalState(true)}>Edit</button>
                 </div>
             </div>
             <Modal
                 isOpen={showModal} ariaHideApp={false}
-                onRequestClose={() => setModalState(false)}
-                // className={"modal-dialog modal-lg"}
+                onRequestClose={() => {
+                    setModalState(false);
+                }}
                 style={{
-                    overlay: { backgroundColor: 'grey' }
-                }   }
+                    overlay: {
+                        // backgroundColor: 'grey',
+                    },
+                    content: {
+                        position: 'relative',
+                        width: 'auto',
+                        height: 'auto',
+                        maxHeight: '50%',
+                        maxWidth: '40%',
+                        top: '10%',
+                        left: '30%',
+                        border:'1px solid black',
+                        borderRadius:'10px'
+                    
+                    }
+                }}
             >
                 <div className="modal-header bg-dark text-white">
                     <h5 className="modal-title" id="exampleModalLabel">{employee.name}</h5>
@@ -72,7 +67,7 @@ function Cards(props) {
                     </button>
                 </div>
                 <div className="modal-body" style={{ backgroundColor: employee.color }}>
-                    <form onSubmit={handleSubmit} className="px-4 py-3">
+                    <form onSubmit={handleSubmit} >
                         <div className="form-group">
                             <label className="text-white">Message:</label>
                             <textarea
